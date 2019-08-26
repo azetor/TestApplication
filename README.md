@@ -1,10 +1,10 @@
 TECH:
-0. Kotlin
-1. OkHttp
-2. Retrofit
-3. RxKotlin
-4. Glide
-5. Timber
+1. Kotlin
+2. OkHttp
+3. Retrofit
+4. RxKotlin
+5. Glide
+6. Timber
 
 FEATURES:
 1. Downloading photos
