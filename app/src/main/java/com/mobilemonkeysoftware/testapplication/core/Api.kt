@@ -11,6 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import timber.log.Timber
 import java.io.Serializable
 
 interface Api {
@@ -59,6 +60,7 @@ object PicsumPhotosApi : Api {
 
     fun flattenedList() : Observable<Photo> = list()
         .flatMap { Observable.fromIterable(it) }
+        .doOnNext { Timber.d("PHOTO: $it") }
 
     override fun photo(id: Int): Observable<Photo> = api
         .photo(id)

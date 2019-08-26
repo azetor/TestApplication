@@ -1,5 +1,7 @@
 package com.mobilemonkeysoftware.testapplication.ui
 
+const val EXTRA_PHOTO = "extra_photo"
+
 interface MvpContract {
     interface Model
 
