@@ -16,4 +16,5 @@ TODO:
 1. MVP
 2. DI
 3. Rotation support - save state
-4. Detail click - BUG to fix
+4. Migration to androidx
+5. Detail click - BUG to fix
