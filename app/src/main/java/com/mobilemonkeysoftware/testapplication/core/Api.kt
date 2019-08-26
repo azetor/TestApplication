@@ -57,6 +57,9 @@ object PicsumPhotosApi : Api {
         .list()
         .subscribeOn(RxSchedulers.cached())
 
+    fun flattenedList() : Observable<Photo> = list()
+        .flatMap { Observable.fromIterable(it) }
+
     override fun photo(id: Int): Observable<Photo> = api
         .photo(id)
         .subscribeOn(RxSchedulers.cached())

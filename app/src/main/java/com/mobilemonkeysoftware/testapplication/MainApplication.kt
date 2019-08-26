@@ -6,11 +6,13 @@ import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.internal.functions.Functions
 import io.reactivex.plugins.RxJavaPlugins
+import timber.log.Timber
 
 class MainApplication : Application() {
 
     init {
         RxJavaPlugins.setErrorHandler(Functions.emptyConsumer())
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { AndroidSchedulers.from(Looper.getMainLooper(), true) }
+        Timber.plant(Timber.DebugTree())
     }
 }
