@@ -1,7 +1,7 @@
 package com.mobilemonkeysoftware.testapplication.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.mobilemonkeysoftware.testapplication.R
 
 class MainActivity : AppCompatActivity() {
@@ -10,15 +10,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
+        navigateTo(this, NavigationDirection.LIST)
     }
 
     override fun onBackPressed() {
-
-        if (supportFragmentManager.backStackEntryCount > 0) {
-            supportFragmentManager.popBackStackImmediate()
-        } else {
-            super.onBackPressed()
-        }
+        manageStack()
     }
 }
 

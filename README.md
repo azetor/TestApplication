@@ -18,4 +18,4 @@ TODO:
 3. Rotation support - save state
 4. Migration to androidx
 5. Migration to nav host
-6. Detail click - BUG to fix
+~~6. Detail click - BUG to fix~~

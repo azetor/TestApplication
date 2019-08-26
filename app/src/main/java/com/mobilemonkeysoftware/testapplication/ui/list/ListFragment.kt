@@ -12,8 +12,8 @@ import com.mobilemonkeysoftware.testapplication.core.Photo
 import com.mobilemonkeysoftware.testapplication.core.PicsumPhotosApi
 import com.mobilemonkeysoftware.testapplication.tools.RxSchedulers
 import com.mobilemonkeysoftware.testapplication.ui.EXTRA_PHOTO
-import com.mobilemonkeysoftware.testapplication.ui.STACK_NAME
-import com.mobilemonkeysoftware.testapplication.ui.detail.DetailFragment
+import com.mobilemonkeysoftware.testapplication.ui.NavigationDirection
+import com.mobilemonkeysoftware.testapplication.ui.navigateTo
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.fragment_list.*
@@ -51,22 +51,6 @@ class ListFragment : Fragment() {
         recycler.adapter = adapter
     }
 
-    private fun showDetail(photo: Photo) {
-
-        activity
-            ?.supportFragmentManager
-            ?.beginTransaction()
-            ?.addToBackStack(STACK_NAME)
-            ?.add(
-                R.id.fragments,
-                Fragment.instantiate(
-                    activity,
-                    DetailFragment::class.java.name,
-                    Bundle().apply { putSerializable(EXTRA_PHOTO, photo) })
-            )
-            ?.commit()
-    }
-
     private fun load() {
 
         PicsumPhotosApi
@@ -91,6 +75,14 @@ class ListFragment : Fragment() {
         clickDisposable = adapter
             .subject
             .subscribeBy { showDetail(it) }
+    }
+
+    private fun showDetail(photo: Photo) {
+
+        navigateTo(
+            activity,
+            NavigationDirection.DETAIL,
+            Bundle().apply { putSerializable(EXTRA_PHOTO, photo) })
     }
 
     override fun onPause() {
